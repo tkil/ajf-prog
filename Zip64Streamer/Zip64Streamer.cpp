@@ -498,7 +498,8 @@ Zip64Streamer::emitCompressedData( FileInfo & fi )
     {
         CharBuffer input;
         input.resize( 32 * 1024 );
-        const std::streamsize nRead = ifs.readsome( &input[0], input.size() );
+        ifs.read( &input[0], input.size() );
+        const std::streamsize nRead = ifs.gcount();
 
         m_zs.next_in = reinterpret_cast< unsigned char * >( &input[0] );
         m_zs.avail_in = static_cast< unsigned int >( nRead );
