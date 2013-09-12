@@ -35,14 +35,15 @@ public:
     {
         for ( char c : s )
         {
-            if ( occurances[c] == 0 )
+            const size_t ci = static_cast< size_t >( c );
+            if ( occurances[ci] == 0 )
             {
                 order[seq++] = c;
-                occurances[c] = 1;
+                occurances[ci] = 1;
             }
-            else if ( occurances[c] == 1 )
+            else if ( occurances[ci] == 1 )
             {
-                occurances[c] = 2;
+                occurances[ci] = 2;
             }
         }
     }
