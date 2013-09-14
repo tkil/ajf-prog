@@ -62,7 +62,7 @@ find_rotated( RandomIter begin,
 
 int main( int argc, char * argv [] )
 {
-    const size_t num_ints = 100;
+    const int num_ints = 100;
 
     // fill vector with lots of even numbers
     int_vec vec;
