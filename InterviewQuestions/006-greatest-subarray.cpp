@@ -1,12 +1,9 @@
 #include <sys/time.h>
 
 #include <iostream>
+#include <random>
 #include <sstream>
 #include <vector>
-
-#include <boost/random/mersenne_twister.hpp>
-#include <boost/random/uniform_int.hpp>
-#include <boost/random/variate_generator.hpp>
 
 namespace
 {
@@ -143,20 +140,15 @@ int main( int argc, char * argv [] )
 
     std::cout << "n_elts=" << n_elts << std::endl;
 
-    boost::mt19937 rng;
-    struct timeval tv;
-    gettimeofday( &tv, 0 );
-    rng.seed( static_cast< unsigned int >( tv.tv_sec  ) ^
-              static_cast< unsigned int >( tv.tv_usec ) );
-
-    boost::uniform_int<> int_dist( -1000, 1000 );
-    boost::variate_generator< boost::mt19937 &, boost::uniform_int<> >
-      int_gen( rng, int_dist );
+    // generate random values
+    std::random_device rand_dev;
+    std::mt19937 rand_gen( rand_dev() );
+    std::uniform_int_distribution< int > rand_dist( -1000, 1000 );
 
     int_vec v;
     v.reserve( n_elts );
     for ( size_t i = 0; i < n_elts; ++i )
-        v.push_back( int_gen() );
+        v.push_back( rand_dist( rand_gen ) );
 
     // std::cout << "v=[";
     // for ( const int i : v )
