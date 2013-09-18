@@ -26,6 +26,8 @@
 namespace
 {
 
+int verbose;
+
 // ---------------------------------------------------------------------
 
 struct coord {
@@ -208,7 +210,8 @@ find_largest_connected( const grid & g, coord_vec & coords )
 {
     grid v( g.x, g.y );
 
-    // std::clog << "g=\n" << g << std::endl;
+    if ( verbose )
+        std::clog << "g=\n" << g << std::endl;
 
     int next_set = 1;
 
@@ -220,7 +223,8 @@ find_largest_connected( const grid & g, coord_vec & coords )
         for ( int col = 0; col < g.x; ++col )
         {
             const coord s{ col, row };
-            // std::clog << s << std::endl;
+            if ( verbose > 1 )
+                std::clog << s << std::endl;
 
             // empty space, ignore
             if ( g( s ) == 0 )
@@ -240,7 +244,8 @@ find_largest_connected( const grid & g, coord_vec & coords )
             while ( ! curr_queue.empty() )
             {
                 coord c = curr_queue.back();
-                // std::clog << "c=" << c << std::endl;
+                if ( verbose > 1 )
+                    std::clog << "c=" << c << std::endl;
                 curr_queue.pop_back();
 
                 curr_coords.push_back( c );
@@ -270,9 +275,10 @@ find_largest_connected( const grid & g, coord_vec & coords )
                 largest_coords.swap( curr_coords );
             }
 
-            // std::clog << 
-            //   "largest=" << largest_size << ", "
-            //   "v=\n" << v << std::endl;
+            if ( verbose )
+                std::clog <<
+                  "largest=" << largest_size << ", "
+                  "v=\n" << v << std::endl;
 
         }
     }
@@ -305,6 +311,14 @@ find_largest_connected( const grid & g, coord_vec & coords )
 int
 main( int argc, char * argv [] )
 {
+    verbose = 0;
+    for ( int i = 1; i < argc; ++i )
+    {
+        const std::string arg( argv[i] );
+        if ( arg == "-v" )
+            ++verbose;
+    }
+
     TEST( "", {} );
 
     {
@@ -389,6 +403,44 @@ main( int argc, char * argv [] )
         TEST( "###.###\n"
               "###.###\n"
               "##..###", expected );
+    }
+
+    {
+        coord_vec expected{
+            { 0, 0 },
+            { 1, 0 },
+            { 2, 0 },
+            { 3, 0 },
+            { 4, 0 },
+            { 5, 0 },
+            { 6, 0 },
+
+            { 6, 1 },
+            { 6, 2 },
+            { 6, 3 },
+            { 6, 4 },
+
+            { 5, 4 },
+            { 4, 4 },
+            { 3, 4 },
+            { 2, 4 },
+            { 1, 4 },
+            { 0, 4 },
+
+            { 0, 3 },
+            { 0, 2 },
+
+            { 1, 2 },
+            { 2, 2 },
+            { 3, 2 },
+            { 4, 2 },
+        };
+        std::sort( expected.begin(), expected.end() );
+        TEST( "#######\n"
+              "......#\n"
+              "#####.#\n"
+              "#.....#\n"
+              "#######", expected );
     }
 
     return 0;
