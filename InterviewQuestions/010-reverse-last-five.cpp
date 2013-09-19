@@ -1,3 +1,21 @@
+/*
+ * Task:
+ *
+ *   Given the root node to a singly linked list, reverse the last 5
+ *   nodes in the list.  For a list with 5 or less nodes, reverse the
+ *   whole list.  (Task 2 in tasks.txt)
+ *
+ * Notes:
+ *
+ *   Use a "lagged pointer" to keep track of the last non-reversed
+ *   node, then an array to temporarily store pointers to the nodes to
+ *   be reversed.
+ *
+ *   Main simplifying trick is to make the "head" of the list the
+ *   "next" element on a temporary node; that allows us to remove any
+ *   special-casing for "head" itself.
+ */
+
 #include <iostream>
 
 namespace
