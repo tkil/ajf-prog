@@ -1,43 +1,52 @@
-1.  You have a ladder n-steps in height.  You can either take one step
-or two steps up the ladder at a time.  How can you find out all the
-different combinations up the ladder?  Then figure out an algorithm that
-will actually print out all the different ways up the ladder.  ie:
-1,1,2,1,2,2... etc...
+1. You have a ladder n-steps in height.  You can either take one step
+   or two steps up the ladder at a time.  How can you find out all the
+   different combinations up the ladder?  Then figure out an algorithm
+   that will actually print out all the different ways up the ladder.
+   ie: 1,1,2,1,2,2... etc...
+     => 004-ladder-rungs.cpp
 
-2.  Given the root node to a singly linked list, reverse the last 5
-nodes in the list.  For a list with 5 or less nodes, reverse the whole list.
+2. Given the root node to a singly linked list, reverse the last 5
+   nodes in the list.  For a list with 5 or less nodes, reverse the
+   whole list.
+     => 010-reverse-last-five.cpp
 
-3.  Given the root node to a singly linked list, write an algorithm to
-detect if there is a loop in the list.
+3. Given the root node to a singly linked list, write an algorithm to
+   detect if there is a loop in the list.
 
-4.  Write an algorithm to calculate the square root of a number.
+4. Write an algorithm to calculate the square root of a number.
+     => 007-sqrt-impl.cpp
 
-5. Give an array of 100 random integers.  Write an algorithm to find the
-the closest 2 integers (closest by position) in the array that add up to 100.
+5. Give an array of 100 random integers.  Write an algorithm to find
+   the the closest 2 integers (closest by position) in the array that
+   add up to 100.
 
-6. Given an array of integers, write a method that returns an array of the same size where each
-index is the product of all integers except itself, ie given array {1,2,3,4} return {24,12,8,6} 
-explicitly {2*3*4,1*3*4,1*2*4,1*2*3}.
+6. Given an array of integers, write a method that returns an array of
+   the same size where each index is the product of all integers
+   except itself, ie given array {1,2,3,4} return {24,12,8,6}
+   explicitly {2*3*4,1*3*4,1*2*4,1*2*3}.
 
-7.  Implement a deque.  Think about what properties a deque must have.
- Implement it as a base class that can be extended and as a template.
-In general, start thinking about what's underneath all the other STL
-data types and how they work.
+7. Implement a deque.  Think about what properties a deque must have.
+   Implement it as a base class that can be extended and as a
+   template.  In general, start thinking about what's underneath all
+   the other STL data types and how they work.
 
-8.  Given a char pointer to large buffer of memory, write your own
-version of my_malloc and my_free without using any system calls.  Make
-it as robust as possible.  How would you minimize memory fragmentation?
+8. Given a char pointer to large buffer of memory, write your own
+   version of my_malloc and my_free without using any system calls.
+   Make it as robust as possible.  How would you minimize memory
+   fragmentation?
 
-9.  Implement quicksort().  Knowing the general algorithm, see if you can implement the concept into code.
+9. Implement quicksort().  Knowing the general algorithm, see if you
+   can implement the concept into code.
 
-10.  Given the function: "bool numExists( int array[], int array_len,
-int num )" where "array" is a sorted array of integers.  Determine if
-"num" exists in the array.
+10. Given the function: "bool numExists( int array[], int array_len,
+    int num )" where "array" is a sorted array of integers.  Determine
+    if "num" exists in the array.
 
 11. The standard library function of atoi() is not very robust.  How
-would you design/implement a better version of it?
+    would you design/implement a better version of it?
 
 12. Implement a Singleton.  It's the most over used and mis-used
-design pattern.  Everyone knows the "textbook" implementation of the
-singleton but think of all the different ways you can implement it and
-what are their pros/cons?  Make a thread-safe version.
+    design pattern.  Everyone knows the "textbook" implementation of
+    the singleton but think of all the different ways you can
+    implement it and what are their pros/cons?  Make a thread-safe
+    version.
