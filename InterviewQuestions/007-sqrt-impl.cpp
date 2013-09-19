@@ -30,15 +30,18 @@ my_sqrt( const double x )
     // f'(r) = - 2 * r;
     // r_i = r_{i-1} - f( r_{i-1} ) / f'( r_{i-1} );
 
+    // note that actual function being driven to zero is:
+    //   f(r) = x - r*r
+    // which is zero when r is the square root of x.
+
     // our initial guesss
     double r = x/2;
     double diff =  x - r * r;
     do
     {
         double r1 = r;
-        // r = r1 - ( x - r1 * r1 ) / ( -2 * r1 );
         r = r1 - diff / ( -2 * r1 );
-        std::clog << "r=" << r << ", r1=" << r1 << std::endl;
+        // std::clog << "r=" << r << ", r1=" << r1 << std::endl;
         diff = x - r * r;
     }
     while ( diff < -epsilon || epsilon < diff );
