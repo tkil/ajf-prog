@@ -92,25 +92,20 @@ list::reverse_last_five()
             lag = lag->next;
         else
             ++seen;
-        // std::clog << "  scan: lag=" << lag->val << ", p=" << p->val << std::endl;
+        // std::clog << "  scan: lag=" << lag->val << ", "
+        //   "p=" << p->val << std::endl;
     }
 
-    node * tail[5];
-    int i = 0;
-
-    for ( node * p = lag->next; p; p = p->next )
+    node * prev = 0;
+    node * curr = lag->next;
+    while ( curr )
     {
-        // std::clog << "  tail: [" << i << "]=" << p->val << std::endl;
-        tail[i++] = p;
+        node * next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
     }
-
-    while ( i > 0 )
-    {
-        lag->next = tail[--i];
-        lag = lag->next;
-        // std::clog << "  flip: lag=" << lag->val << std::endl;
-    }
-    lag->next = 0;
+    lag->next = prev;
 
     head = tmp.next;
 }
