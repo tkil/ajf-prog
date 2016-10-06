@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
+// This is a new blank line!
 #include "bit_counters.hpp"
 
 namespace // anonymous
